@@ -14,6 +14,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -81,7 +82,7 @@ public class UserController {
             return ResponseEntity.badRequest().body("Please send valid details of the Community");
         String username = ((User) authentication.getPrincipal()).getUsername();
         String response = communityService.requestToJoinCommunity(communityDTO, username, flatNumber);
-        return ResponseEntity.ok(response);
+        return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/create/visit")
@@ -94,10 +95,10 @@ public class UserController {
         String response = "User is a part of the community, you don't need to make a visit.";
         if(!communityService.checkUserPartOfCommunity(flatDTO.getCommunityDTO(), username))
             response = visitService.createVisit(flatDTO,username);
-        return ResponseEntity.ok(response);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @PostMapping("/outbound/visit")
+    @PatchMapping("/outbound/visit")
     public ResponseEntity<String> completeVisit(@Valid @RequestBody CommunityDTO communityDTO, BindingResult bindingResult,
                                                 Authentication authentication){
         String username = ((User) authentication.getPrincipal()).getUsername();
@@ -105,7 +106,7 @@ public class UserController {
         String response = "User is a part of the community, you don't need to mark an outbound visit.";
         if(!communityService.checkUserPartOfCommunity(communityDTO, username))
             response = visitService.completeVisit(communityDTO, username);
-        return ResponseEntity.ok(response);
+        return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 }
 
