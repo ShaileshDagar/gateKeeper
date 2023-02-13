@@ -8,6 +8,8 @@ import com.GateKeeper.gateKeeper.model.UserDTO;
 import com.GateKeeper.gateKeeper.repos.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,6 +23,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
 
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(UserService.class);
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 

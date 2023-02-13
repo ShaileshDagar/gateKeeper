@@ -109,19 +109,3 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 }
-
-
-//    @PatchMapping(value = "/user/address", consumes = {MediaType.ALL_VALUE})
-//    public ResponseEntity<Address> updateUserAddress(@RequestParam Map<String,String> map){
-//        Address address = new Address();
-//        if(map.size()!=4)
-//        {
-//            return ResponseEntity.badRequest().body(address);
-//        }
-//        address.setAreaCode(map.get("areaCode"));
-//        address.setCity(map.get("city"));
-//        address.setState(map.get("state"));
-//        address.setCountry(map.get("country"));
-//        String userName = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-//        return ResponseEntity.ok(userService.updateUserAddress(userName, address));
-//    }
