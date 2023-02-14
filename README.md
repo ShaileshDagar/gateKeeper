@@ -15,6 +15,7 @@ and visit other communities as a Visitor.
 * [Hibernate](https://hibernate.org/orm/documentation/6.1/)
 * [Project Lombok](https://projectlombok.org/)
 * [IntelliJ Idea](https://www.jetbrains.com/idea/)
+* [Redis CLI](https://redis.io/docs/ui/cli/)
 
 ## Requirements
 For building and running the application you need:
@@ -22,6 +23,7 @@ For building and running the application you need:
 - [JDK 17](https://www.oracle.com/java/technologies/downloads/)
 - [Maven 3](https://maven.apache.org)
 - [MySQL](https://www.mysql.com/)
+- [Redis](https://redis.io/)
 
 ## Running the application locally
 
